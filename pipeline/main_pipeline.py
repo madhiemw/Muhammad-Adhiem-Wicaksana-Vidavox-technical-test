@@ -41,11 +41,11 @@ class QAPipeline:
 
             response = self.groq_pipeline.generate_response(retrieved_text, question)
             tabledetect = remove_table_and_text(response)
-            cleaned_response = remove_unnecesery_table(tabledetect)
             if tabledetect == False:
+                cleaned_response = remove_unnecesery_table(response)
                 return retrieved_text, cleaned_response
             else: 
-                cleaned_response = remove_unnecesery_table(tabledetect)
+                cleaned_response = remove_unnecesery_table(response )
                 generateqsl = self.sql_generator.generate_response(question)
                 if generateqsl is not None:
                     sql_execute = self.sql_execute.execute_query(generateqsl)
