@@ -14,15 +14,35 @@ def create_app():
     interface = gr.Interface(
         fn=process_message,
         inputs=[
-            gr.Textbox(label="Your Question"),  
-            gr.Dropdown(choices=["QnA data", "Semantic Data"], label="Select Collection", value="Semantic Data") 
+            gr.Textbox(label="Your Question", placeholder="Enter your question here...", lines=2),  
+            gr.Dropdown(
+                choices=["QnA data", "Semantic Data"], 
+                label="Select Collection", 
+                value="Semantic Data"
+            ) 
         ],
         outputs=[
-            gr.Textbox(label="AI Response"),  
-            gr.Textbox(label="Retrieved Documents from ChromaDB"),  
+            gr.Textbox(label="AI Response", interactive=False),  
+            gr.Textbox(label="Retrieved Documents from ChromaDB", interactive=False, lines=5),  
         ],
-        title="Muhammad Adhiem Wicaksana Vidavox Technical Test",
-        description="Ask questions and choose a crhoma db collection, read my documentation for the purpose of the collection :)",
+        title="Vidavox AI Q&A System",
+        description=(
+            "Ask a question about the AV-826 Smart Robot and retrieve relevant information from ChromaDB. "
+            "Select a data collection and explore the system's capabilities.\n\n"
+            "**Example Questions:**\n"
+            "- Apa saja nilai jual utama pada robot ini?\n"
+            "- Apa saja yang robot ini dapat lakukan?\n"
+            "- Apa saja kelebihan robot ini dibandingkan dengan kompetitor?\n"
+            "- Apakah robot ini lebih baik dari kompetitor?\n"
+            "- Jelaskan bagaimana kemampuan robot ini dalam memasak dan membersihkan rumah.\n"
+            "- Apakah ada hal khusus yang harus diperhatikan untuk perawatan robot?\n"
+            "- Bagaimana menghubungkan aplikasi dengan robot?\n"
+            "- Apakah robot ini membutuhkan perawatan khusus?\n"
+            "- Seberapa efisien robot ini dapat bekerja?\n"
+            "- Bagaimana dengan daya tahan baterai yang dimiliki robot ini?\n"
+            "- Bagaimana efisiensi robot ini dalam melakukan pembersihan rumah?"
+        ),
+        theme="compact",
     )
 
     return interface
