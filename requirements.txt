@@ -1,0 +1,6 @@
+sentence-transformers
+scikit-learn
+requests
+regex
+chromadb
+mysql-connector-python
